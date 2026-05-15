@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://b8ux20id6pnky"]
+
+[ext_resource type="Script" uid="uid://c1w17w0v2ow2f" path="res://scripts/sinatra_controller.gd" id="1_4k038"]
+[ext_resource type="Texture2D" uid="uid://bb6snunogld0g" path="res://assets/characters/sinatra_fall.png" id="1_c3bs7"]
+[ext_resource type="Texture2D" uid="uid://dlo1p5mg6irbi" path="res://assets/characters/sinatra_run.png" id="1_vpeus"]
+[ext_resource type="Texture2D" uid="uid://brgbjupwtrmtf" path="res://assets/characters/sinatra_walljump.png" id="2_ellcv"]
+[ext_resource type="Texture2D" uid="uid://cqcxtg6kfdgem" path="res://assets/characters/sinatra_idle.png" id="2_uj03w"]
+[ext_resource type="Texture2D" uid="uid://hl6g2j7lh8ip" path="res://assets/characters/sinatra_slide.png" id="4_uj03w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ellcv"]
+size = Vector2(12, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbgrs"]
+atlas = ExtResource("1_c3bs7")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5754x"]
+atlas = ExtResource("1_c3bs7")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4aua"]
+atlas = ExtResource("2_uj03w")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmpdx"]
+atlas = ExtResource("2_uj03w")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_feo7j"]
+atlas = ExtResource("1_vpeus")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3bs7"]
+atlas = ExtResource("1_vpeus")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uj03w"]
+atlas = ExtResource("1_vpeus")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4k038"]
+atlas = ExtResource("1_vpeus")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3584i"]
+atlas = ExtResource("4_uj03w")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lbgrs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbgrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5754x")
+}],
+"loop": true,
+"name": &"sinatra_fall",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4aua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmpdx")
+}],
+"loop": true,
+"name": &"sinatra_idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_feo7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3bs7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uj03w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4k038")
+}],
+"loop": true,
+"name": &"sinatra_run",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3584i")
+}],
+"loop": true,
+"name": &"sinatra_slide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ellcv")
+}],
+"loop": true,
+"name": &"sinatra_walljump",
+"speed": 1.0
+}]
+
+[node name="Sinatra" type="CharacterBody2D" unique_id=357705737]
+script = ExtResource("1_4k038")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=145655919]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_ellcv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=400940614]
+sprite_frames = SubResource("SpriteFrames_lbgrs")
+animation = &"sinatra_fall"
+autoplay = "sinatra_idle"
+frame_progress = 0.46107104
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=269041553]
+
+[node name="CoyoteTimer" type="Timer" parent="." unique_id=1057881902]
+process_callback = 0
+wait_time = 0.3
+one_shot = true
+
+[node name="WalljumpRay" type="RayCast2D" parent="." unique_id=1628094166]
