@@ -6,10 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://brgbjupwtrmtf" path="res://assets/characters/sinatra_walljump.png" id="2_ellcv"]
 [ext_resource type="Texture2D" uid="uid://cqcxtg6kfdgem" path="res://assets/characters/sinatra_idle.png" id="2_uj03w"]
 [ext_resource type="Texture2D" uid="uid://hl6g2j7lh8ip" path="res://assets/characters/sinatra_slide.png" id="4_uj03w"]
-[ext_resource type="LabelSettings" uid="uid://c0rg7afvfgqrm" path="res://assets/fonts/label_settings.tres" id="7_lbgrs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4k038"]
-size = Vector2(12, 7)
+size = Vector2(12, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lbgrs"]
 atlas = ExtResource("1_c3bs7")
@@ -106,79 +105,39 @@ animations = [{
 }]
 
 [node name="Sinatra" type="CharacterBody2D" unique_id=357705737]
-visibility_layer = 2
-collision_layer = 2
 script = ExtResource("1_4k038")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=145655919]
-visibility_layer = 2
-z_index = 1
-z_as_relative = false
-position = Vector2(0, 12.5)
+position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_4k038")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=400940614]
-visibility_layer = 2
-z_index = 1
-z_as_relative = false
 sprite_frames = SubResource("SpriteFrames_lbgrs")
-animation = &"sinatra_fall"
+animation = &"sinatra_walljump"
 autoplay = "sinatra_idle"
-frame_progress = 0.45956394
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=269041553]
+zoom = Vector2(4, 4)
 
 [node name="RightWallRay" type="RayCast2D" parent="." unique_id=1628094166]
-visibility_layer = 2
-z_index = 1
-z_as_relative = false
 position = Vector2(0, 4)
 target_position = Vector2(13, 0)
 
 [node name="LeftWallRay" type="RayCast2D" parent="." unique_id=1734675612]
-visibility_layer = 2
-z_index = 1
-z_as_relative = false
 position = Vector2(0, 4)
 target_position = Vector2(-13, 0)
 
 [node name="CoyoteTimer" type="Timer" parent="." unique_id=1057881902]
 process_callback = 0
-wait_time = 0.1
+wait_time = 0.05
 one_shot = true
 
 [node name="JumpBuffer" type="Timer" parent="." unique_id=1727933280]
 process_callback = 0
-wait_time = 0.3
+wait_time = 0.1
 one_shot = true
 
 [node name="MaxJumpTime" type="Timer" parent="." unique_id=1265148713]
 process_callback = 0
-wait_time = 0.15
+wait_time = 0.1
 one_shot = true
-
-[node name="SlideMinimum" type="Timer" parent="." unique_id=2012354950]
-process_callback = 0
-wait_time = 0.5
-one_shot = true
-
-[node name="State" type="Label" parent="." unique_id=529931096]
-z_index = 1
-z_as_relative = false
-offset_left = -10.0
-offset_top = -30.0
-offset_right = 9.0
-offset_bottom = -18.0
-text = "State"
-label_settings = ExtResource("7_lbgrs")
-
-[node name="SlideTime" type="Label" parent="." unique_id=1807447644]
-offset_left = 8.0
-offset_top = -12.0
-offset_right = 48.0
-offset_bottom = 11.0
-label_settings = ExtResource("7_lbgrs")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=269041553]
-visibility_layer = 2
-z_index = 1
-z_as_relative = false
-zoom = Vector2(2, 2)

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b8qsr26uos21x"]
+
+[ext_resource type="TileSet" uid="uid://dvyweohdyonlp" path="res://assets/tileset_world.tres" id="1_md458"]
+
+[node name="BaseLevel" type="Node2D" unique_id=1098134570]
+
+[node name="TileMapLayerBG" type="TileMapLayer" parent="." unique_id=559085499]
+z_as_relative = false
+tile_set = ExtResource("1_md458")
+
+[node name="TileMapLayerFG" type="TileMapLayer" parent="." unique_id=343454281]
+z_as_relative = false
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1525690498]
+z_as_relative = false
+
+[node name="Entities" type="Node2D" parent="." unique_id=2127346886]
+visibility_layer = 2
+z_as_relative = false

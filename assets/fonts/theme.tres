@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://bjxlqj1ttfwag"]
+
+[ext_resource type="FontFile" uid="uid://cphtl3xbhjvwf" path="res://assets/fonts/slimp.ttf" id="1_yoxy4"]
+
+[resource]
+default_font = ExtResource("1_yoxy4")
+default_font_size = 16

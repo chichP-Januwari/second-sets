@@ -1,0 +1,6 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://c0rg7afvfgqrm"]
+
+[ext_resource type="FontFile" uid="uid://cphtl3xbhjvwf" path="res://assets/fonts/slimp.ttf" id="1_li8ak"]
+
+[resource]
+font = ExtResource("1_li8ak")

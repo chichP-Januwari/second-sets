@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://d03edcebpcl55"
-path="res://.godot/imported/Jersey10-Regular.ttf-708306d553cbdfc23e714fed342c83b6.fontdata"
+uid="uid://cphtl3xbhjvwf"
+path="res://.godot/imported/slimp.ttf-86f28948ba57940426d8b717e4c808f1.fontdata"
 
 [deps]
 
-source_file="res://assets/Jersey10-Regular.ttf"
-dest_files=["res://.godot/imported/Jersey10-Regular.ttf-708306d553cbdfc23e714fed342c83b6.fontdata"]
+source_file="res://assets/fonts/slimp.ttf"
+dest_files=["res://.godot/imported/slimp.ttf-86f28948ba57940426d8b717e4c808f1.fontdata"]
 
 [params]
 
