@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bbugd3ev5r7bp"]
+
+[ext_resource type="Script" uid="uid://b3o0m6spflsuq" path="res://scripts/frank_controller.gd" id="1_fx7tn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ta6i"]
+size = Vector2(10, 20)
+
+[node name="Frank" type="Area2D" unique_id=1215409612]
+monitorable = false
+script = ExtResource("1_fx7tn")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=326000059]
+shape = SubResource("RectangleShape2D_7ta6i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1670980642]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=206909011]

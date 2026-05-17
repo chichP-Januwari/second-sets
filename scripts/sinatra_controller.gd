@@ -7,13 +7,12 @@ enum STATE {
 	FALL,
 	SLIDE,
 	WALLSLIDE,
-	WALLJUMP
+	WALLJUMP,
 }
 
-var walk_velocity := 250.0
+var walk_velocity := 220.0
 var jump_velocity := -200.0
-var roll_speed := 400.0
-var additional_roll_time := 0.5
+var roll_speed := 300.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var active_state := STATE.IDLE
@@ -100,7 +99,6 @@ func _physics_process(delta: float) -> void:
 			pass
 	
 	$State.text = STATE.keys()[active_state]
-	$SlideTime.text = str($SlideMinimum.time_left)
 	move_and_slide()
 
 
@@ -132,7 +130,7 @@ func switch_state(to_state: STATE) -> void: ## Handles switching and animation
 			$AnimatedSprite2D.play("sinatra_slide")
 		
 		STATE.WALLSLIDE:
-			pass
+			$AnimatedSprite2D.play("sinatra_walljump")
 		
 		STATE.WALLJUMP:
-			pass
+			$AnimatedSprite2D.play("sinatra_walljump")

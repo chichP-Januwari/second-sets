@@ -170,15 +170,6 @@ offset_bottom = -18.0
 text = "State"
 label_settings = ExtResource("7_lbgrs")
 
-[node name="SlideTime" type="Label" parent="." unique_id=1807447644]
-offset_left = 8.0
-offset_top = -12.0
-offset_right = 48.0
-offset_bottom = 11.0
-label_settings = ExtResource("7_lbgrs")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=269041553]
-visibility_layer = 2
-z_index = 1
-z_as_relative = false
-zoom = Vector2(2, 2)
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1227844596]
+update_rotation = false
+update_scale = false
