@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cw2b0rp6jcq1g" path="res://scripts/base_level.gd" id="1_o1chu"]
 [ext_resource type="PackedScene" uid="uid://ci4u7vq8g3tf4" path="res://scenes/camera.tscn" id="2_uk53i"]
 [ext_resource type="Texture2D" uid="uid://c4bmdmnt3ag02" path="res://assets/TilesetExtras.png" id="2_wwrw0"]
+[ext_resource type="Texture2D" uid="uid://dmt7dqrpexxb7" path="res://icon.svg" id="5_o1chu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o1chu"]
 texture = ExtResource("2_wwrw0")
@@ -42,3 +43,12 @@ limit_right = 640
 limit_bottom = 360
 
 [node name="CutsceneTimer" type="Timer" parent="." unique_id=193647982]
+
+[node name="Node2D" type="Node2D" parent="." unique_id=748242650]
+position = Vector2(370, 290)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=496500092]
+scale = Vector2(0.09375, 0.09375)
+texture = ExtResource("5_o1chu")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Node2D" unique_id=897181410]

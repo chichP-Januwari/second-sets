@@ -14,6 +14,7 @@ var walk_velocity := 220.0
 var jump_velocity := -200.0
 var roll_speed := 300.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var wallslide_gravity = gravity - 300.0
 
 var active_state := STATE.IDLE
 var facing_direction := 0 # Right
@@ -23,10 +24,15 @@ func _physics_process(delta: float) -> void:
 	if !active_state == STATE.SLIDE:
 		direction = Input.get_axis("left", "right")
 	
-	if direction == 1:
-		facing_direction = 0 # Right
-	elif direction == -1:
-		facing_direction = 1 # Left
+	if !active_state == STATE.WALLSLIDE or !active_state == STATE.WALLJUMP:
+		if direction == 1:
+			facing_direction = 0 # Right
+		elif direction == -1:
+			facing_direction = 1 # Left
+	elif $LeftWallRay.is_colliding() == true: # Right
+		facing_direction = 0
+	elif $RighWallRay.is_colliding() == true: # Left
+		facing_direction = 1
 	
 	$AnimatedSprite2D.flip_h = facing_direction
 	
@@ -83,6 +89,9 @@ func _physics_process(delta: float) -> void:
 			if is_on_floor(): # To IDLE
 				switch_state(STATE.IDLE)
 			
+			if is_on_wall_only():
+				switch_state(STATE.WALLSLIDE)
+			
 		STATE.SLIDE:
 			if facing_direction == 0: # Right
 				velocity.x = roll_speed * 1
@@ -93,7 +102,10 @@ func _physics_process(delta: float) -> void:
 				switch_state(STATE.IDLE)
 			
 		STATE.WALLSLIDE:
-			pass
+			velocity.x = direction * walk_velocity
+			velocity.y += wallslide_gravity * delta
+			if is_on_floor():
+				switch_state(STATE.IDLE)
 		
 		STATE.WALLJUMP:
 			pass

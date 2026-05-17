@@ -2,7 +2,6 @@
 
 [ext_resource type="TileSet" uid="uid://dvyweohdyonlp" path="res://assets/tileset_world.tres" id="1_yautc"]
 [ext_resource type="PackedScene" uid="uid://b8ux20id6pnky" path="res://scenes/sinatra.tscn" id="2_fr1um"]
-[ext_resource type="PackedScene" uid="uid://ci4u7vq8g3tf4" path="res://scenes/camera.tscn" id="3_fr1um"]
 
 [node name="TestLevel" type="Node2D" unique_id=1152434532]
 
@@ -14,5 +13,6 @@ tile_set = ExtResource("1_yautc")
 [node name="Sinatra" parent="." unique_id=357705737 instance=ExtResource("2_fr1um")]
 position = Vector2(179, -16)
 
-[node name="Camera" parent="Sinatra" unique_id=1228492484 instance=ExtResource("3_fr1um")]
-offset = Vector2(120, 0)
+[node name="Camera2D" type="Camera2D" parent="Sinatra" unique_id=457050767]
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0

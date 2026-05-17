@@ -12,7 +12,7 @@ var sinatra_instance = sinatra_scene.instantiate()
 """
 
 var key_collected := false
-var frank
+
 
 var position_array : Array = [] # Contains positions that player (Sinatra) had
 var animstate_array : Array # Contains animation states that player (Sinatra) had
