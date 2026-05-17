@@ -7,14 +7,12 @@ enum STATE {
 	FALL,
 	SLIDE,
 	WALLSLIDE,
-	WALLJUMP,
 }
 
 var walk_velocity := 220.0
 var jump_velocity := -200.0
 var roll_speed := 300.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var wallslide_gravity = gravity - 300.0
 
 var active_state := STATE.IDLE
 var facing_direction := 0 # Right
@@ -23,16 +21,17 @@ func _physics_process(delta: float) -> void:
 	var direction : float
 	if !active_state == STATE.SLIDE:
 		direction = Input.get_axis("left", "right")
-	
-	if !active_state == STATE.WALLSLIDE or !active_state == STATE.WALLJUMP:
+
+	if active_state == STATE.WALLSLIDE:
+		if $LeftWallRay.is_colliding() == true: # Right
+			facing_direction = 0
+		elif $RightWallRay.is_colliding() == true: # Left
+			facing_direction = 1
+	else:
 		if direction == 1:
 			facing_direction = 0 # Right
 		elif direction == -1:
 			facing_direction = 1 # Left
-	elif $LeftWallRay.is_colliding() == true: # Right
-		facing_direction = 0
-	elif $RighWallRay.is_colliding() == true: # Left
-		facing_direction = 1
 	
 	$AnimatedSprite2D.flip_h = facing_direction
 	
@@ -92,7 +91,7 @@ func _physics_process(delta: float) -> void:
 			if is_on_wall_only():
 				switch_state(STATE.WALLSLIDE)
 			
-		STATE.SLIDE:
+		STATE.SLIDE: # Travels 10~ tiles
 			if facing_direction == 0: # Right
 				velocity.x = roll_speed * 1
 			elif facing_direction == 1: # Left
@@ -103,12 +102,21 @@ func _physics_process(delta: float) -> void:
 			
 		STATE.WALLSLIDE:
 			velocity.x = direction * walk_velocity
-			velocity.y += wallslide_gravity * delta
-			if is_on_floor():
+			velocity.y = 40
+			
+			if !is_on_wall_only(): # To FALL
+				$CoyoteTimer.start()
+				switch_state(STATE.FALL)
+			
+			if is_on_floor(): # To IDLE
 				switch_state(STATE.IDLE)
-		
-		STATE.WALLJUMP:
-			pass
+			
+			if Input.is_action_just_pressed("jump"): # To JUMP
+				switch_state(STATE.JUMP)
+				if $LeftWallRay.is_colliding() == true:
+					facing_direction = 0
+				elif $RightWallRay.is_colliding() == true:
+					facing_direction = 1
 	
 	$State.text = STATE.keys()[active_state]
 	move_and_slide()
@@ -120,6 +128,8 @@ func switch_state(to_state: STATE) -> void: ## Handles switching and animation
 	match active_state:
 		STATE.IDLE:
 			$SlideMinimum.stop()
+			$LeftWallRay.enabled = true
+			$RightWallRay.enabled = true
 			$Collision.shape.size = Vector2(12, 31)
 			$Collision.position = Vector2(0, 0.5)
 			$AnimatedSprite2D.play("sinatra_idle")
@@ -142,7 +152,4 @@ func switch_state(to_state: STATE) -> void: ## Handles switching and animation
 			$AnimatedSprite2D.play("sinatra_slide")
 		
 		STATE.WALLSLIDE:
-			$AnimatedSprite2D.play("sinatra_walljump")
-		
-		STATE.WALLJUMP:
 			$AnimatedSprite2D.play("sinatra_walljump")
