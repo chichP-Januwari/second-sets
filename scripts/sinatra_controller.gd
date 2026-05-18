@@ -114,9 +114,9 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_just_pressed("jump"): # To JUMP
 				switch_state(STATE.JUMP)
 				if $LeftWallRay.is_colliding() == true:
-					facing_direction = 0
+					$LeftWallRay.enabled = false
 				elif $RightWallRay.is_colliding() == true:
-					facing_direction = 1
+					$RightWallRay.enabled = false
 	
 	$State.text = STATE.keys()[active_state]
 	move_and_slide()
@@ -153,3 +153,4 @@ func switch_state(to_state: STATE) -> void: ## Handles switching and animation
 		
 		STATE.WALLSLIDE:
 			$AnimatedSprite2D.play("sinatra_walljump")
+			
