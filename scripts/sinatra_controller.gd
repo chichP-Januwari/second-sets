@@ -21,17 +21,11 @@ func _physics_process(delta: float) -> void:
 	var direction : float
 	if !active_state == STATE.SLIDE:
 		direction = Input.get_axis("left", "right")
-
-	if active_state == STATE.WALLSLIDE:
-		if $LeftWallRay.is_colliding() == true: # Right
-			facing_direction = 0
-		elif $RightWallRay.is_colliding() == true: # Left
-			facing_direction = 1
-	else:
-		if direction == 1:
-			facing_direction = 0 # Right
-		elif direction == -1:
-			facing_direction = 1 # Left
+	# Only for animations
+	if direction == 1:
+		facing_direction = 0 # Right
+	elif direction == -1:
+		facing_direction = 1 # Left
 	
 	$AnimatedSprite2D.flip_h = facing_direction
 	
@@ -112,11 +106,11 @@ func _physics_process(delta: float) -> void:
 				switch_state(STATE.IDLE)
 			
 			if Input.is_action_just_pressed("jump"): # To JUMP
-				switch_state(STATE.JUMP)
 				if $LeftWallRay.is_colliding() == true:
 					$LeftWallRay.enabled = false
 				elif $RightWallRay.is_colliding() == true:
 					$RightWallRay.enabled = false
+				switch_state(STATE.JUMP)
 	
 	$State.text = STATE.keys()[active_state]
 	move_and_slide()
