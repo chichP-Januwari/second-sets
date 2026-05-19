@@ -1,2 +1,2 @@
 # second-sets
-My epic platformer game where a guy chases you
+Steal some valuables from the vault! Don't get caught on the way back.
