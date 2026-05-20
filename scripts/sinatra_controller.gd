@@ -13,6 +13,7 @@ enum STATE {
 var walk_velocity := 220.0
 var jump_velocity := -200.0
 var walljump_velocity := -250.0
+var last_walljump := 0.0
 
 var roll_speed := 300.0 # Also used for walljump
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -22,13 +23,14 @@ var facing_direction := 0 # For animations and sliding, Right
 
 func _physics_process(delta: float) -> void:
 	var direction : float
-	if active_state != STATE.SLIDE or STATE.WALLSLIDE:
+	if active_state != STATE.SLIDE and active_state != STATE.WALLJUMP:
 		direction = Input.get_axis("left", "right")
 	# For sprite flipping
-	if direction == 1:
-		facing_direction = 0 # Right
-	elif direction == -1:
-		facing_direction = 1 # Left
+	if active_state != STATE.WALLSLIDE:
+		if sign(direction) == 1:
+			facing_direction = 0 # Right
+		elif sign(direction) == -1:
+			facing_direction = 1 # Left
 	
 	$AnimatedSprite2D.flip_h = facing_direction
 	
@@ -85,22 +87,27 @@ func _physics_process(delta: float) -> void:
 			if is_on_floor(): # To IDLE
 				switch_state(STATE.IDLE)
 			
-			if is_on_wall_only():
+			if is_on_wall_only(): # To WALLSLIDE
 				switch_state(STATE.WALLSLIDE)
 			
 		STATE.SLIDE: # Travels 10~ tiles
-			velocity.x = roll_speed * direction
 			if facing_direction == 0: # Right
 				direction = 1
 			elif facing_direction == 1: # Left
 				direction = -1
+			velocity.x = roll_speed * direction
 			
 			if $SlideMinimum.is_stopped() or !is_on_floor() or is_on_wall(): # To IDLE
 				switch_state(STATE.IDLE)
 			
 		STATE.WALLSLIDE:
 			velocity.x = direction * walk_velocity
-			velocity.y = 40
+			velocity.y = 30
+			
+			if sign(get_wall_normal().x) == 1:
+				facing_direction = 1
+			elif sign(get_wall_normal().x) == -1:
+				facing_direction = 0
 			
 			if !is_on_wall_only(): # To FALL
 				switch_state(STATE.FALL)
@@ -119,7 +126,8 @@ func _physics_process(delta: float) -> void:
 			if !Input.is_action_pressed("jump") or $WallJumpTimer.is_stopped() or is_on_ceiling_only(): # To FALL
 				switch_state(STATE.FALL)
 			
-			if is_on_wall():
+			if direction != last_walljump and is_on_wall_only(): # Charge that motherfucker to the WALL!
+				velocity.x = roll_speed * last_walljump
 				switch_state(STATE.WALLSLIDE)
 	
 	$State.text = STATE.keys()[active_state]
@@ -158,5 +166,6 @@ func switch_state(to_state: STATE) -> void: ## Handles switching and animation
 			$AnimatedSprite2D.play("sinatra_wallslide")
 		
 		STATE.WALLJUMP:
+			last_walljump = get_wall_normal().x
 			$WallJumpTimer.start()
 			$AnimatedSprite2D.play("sinatra_walljump")
