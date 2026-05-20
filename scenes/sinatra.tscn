@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://c1w17w0v2ow2f" path="res://scripts/sinatra_controller.gd" id="1_4k038"]
 [ext_resource type="Texture2D" uid="uid://bb6snunogld0g" path="res://assets/characters/sinatra_fall.png" id="1_c3bs7"]
 [ext_resource type="Texture2D" uid="uid://dlo1p5mg6irbi" path="res://assets/characters/sinatra_run.png" id="1_vpeus"]
-[ext_resource type="Texture2D" uid="uid://brgbjupwtrmtf" path="res://assets/characters/sinatra_walljump.png" id="2_ellcv"]
 [ext_resource type="Texture2D" uid="uid://cqcxtg6kfdgem" path="res://assets/characters/sinatra_idle.png" id="2_uj03w"]
 [ext_resource type="Texture2D" uid="uid://hl6g2j7lh8ip" path="res://assets/characters/sinatra_slide.png" id="4_uj03w"]
+[ext_resource type="Texture2D" uid="uid://c1nihx6ynnt01" path="res://assets/characters/sinatra_wallslide.png" id="6_lbgrs"]
 [ext_resource type="LabelSettings" uid="uid://c0rg7afvfgqrm" path="res://assets/fonts/label_settings.tres" id="7_lbgrs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4k038"]
@@ -98,10 +98,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ellcv")
+"texture": ExtResource("6_lbgrs")
 }],
 "loop": true,
-"name": &"sinatra_walljump",
+"name": &"sinatra_wallslide",
 "speed": 1.0
 }]
 
@@ -122,9 +122,8 @@ visibility_layer = 2
 z_index = 1
 z_as_relative = false
 sprite_frames = SubResource("SpriteFrames_lbgrs")
-animation = &"sinatra_fall"
+animation = &"sinatra_wallslide"
 autoplay = "sinatra_idle"
-frame_progress = 0.45956394
 
 [node name="RightWallRay" type="RayCast2D" parent="." unique_id=1628094166]
 visibility_layer = 2

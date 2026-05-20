@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brgbjupwtrmtf"
-path="res://.godot/imported/sinatra_walljump.png-39933b808c0f0b69bd2fc463601fc56d.ctex"
+uid="uid://c1nihx6ynnt01"
+path="res://.godot/imported/sinatra_wallslide.png-db256841bc8ce7e33facc05c5b6d1816.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/sinatra_walljump.png"
-dest_files=["res://.godot/imported/sinatra_walljump.png-39933b808c0f0b69bd2fc463601fc56d.ctex"]
+source_file="res://assets/characters/sinatra_wallslide.png"
+dest_files=["res://.godot/imported/sinatra_wallslide.png-db256841bc8ce7e33facc05c5b6d1816.ctex"]
 
 [params]
 

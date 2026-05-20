@@ -7,6 +7,7 @@ enum STATE {
 	FALL,
 	SLIDE,
 	WALLSLIDE,
+	WALLJUMP,
 }
 
 var walk_velocity := 220.0
@@ -146,5 +147,5 @@ func switch_state(to_state: STATE) -> void: ## Handles switching and animation
 			$AnimatedSprite2D.play("sinatra_slide")
 		
 		STATE.WALLSLIDE:
-			$AnimatedSprite2D.play("sinatra_walljump")
+			$AnimatedSprite2D.play("sinatra_wallslide")
 			
