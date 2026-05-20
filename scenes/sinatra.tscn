@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c1w17w0v2ow2f" path="res://scripts/sinatra_controller.gd" id="1_4k038"]
 [ext_resource type="Texture2D" uid="uid://bb6snunogld0g" path="res://assets/characters/sinatra_fall.png" id="1_c3bs7"]
 [ext_resource type="Texture2D" uid="uid://dlo1p5mg6irbi" path="res://assets/characters/sinatra_run.png" id="1_vpeus"]
+[ext_resource type="Texture2D" uid="uid://br1e61y0j3pw5" path="res://assets/characters/sinatra_walljump.png" id="2_ellcv"]
 [ext_resource type="Texture2D" uid="uid://cqcxtg6kfdgem" path="res://assets/characters/sinatra_idle.png" id="2_uj03w"]
 [ext_resource type="Texture2D" uid="uid://cyhukfs0js74l" path="res://assets/characters/sinatra_jump.png" id="4_5754x"]
 [ext_resource type="Texture2D" uid="uid://hl6g2j7lh8ip" path="res://assets/characters/sinatra_slide.png" id="4_uj03w"]
@@ -125,6 +126,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_ellcv")
+}],
+"loop": false,
+"name": &"sinatra_walljump",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("6_lbgrs")
 }],
 "loop": false,
@@ -149,22 +158,16 @@ visibility_layer = 2
 z_index = 1
 z_as_relative = false
 sprite_frames = SubResource("SpriteFrames_lbgrs")
-animation = &"sinatra_jump"
+animation = &"sinatra_walljump"
 autoplay = "sinatra_idle"
 
-[node name="RightWallRay" type="RayCast2D" parent="." unique_id=1628094166]
-visibility_layer = 2
-z_index = 1
-z_as_relative = false
-position = Vector2(0, 4)
-target_position = Vector2(13, 0)
+[node name="LeftWallRay" type="RayCast2D" parent="." unique_id=2114182885]
+position = Vector2(0, -10)
+target_position = Vector2(-25, 0)
 
-[node name="LeftWallRay" type="RayCast2D" parent="." unique_id=1734675612]
-visibility_layer = 2
-z_index = 1
-z_as_relative = false
-position = Vector2(0, 4)
-target_position = Vector2(-13, 0)
+[node name="RightWallRay" type="RayCast2D" parent="." unique_id=1376696689]
+position = Vector2(0, -10)
+target_position = Vector2(25, 0)
 
 [node name="CoyoteTimer" type="Timer" parent="." unique_id=1057881902]
 process_callback = 0
@@ -178,7 +181,7 @@ one_shot = true
 
 [node name="MaxJumpTime" type="Timer" parent="." unique_id=1265148713]
 process_callback = 0
-wait_time = 0.15
+wait_time = 0.2
 one_shot = true
 
 [node name="SlideMinimum" type="Timer" parent="." unique_id=2012354950]

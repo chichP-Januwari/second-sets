@@ -12,6 +12,8 @@ enum STATE {
 
 var walk_velocity := 220.0
 var jump_velocity := -200.0
+var walljump_velocity := -300.0
+
 var roll_speed := 300.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -22,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	var direction : float
 	if !active_state == STATE.SLIDE:
 		direction = Input.get_axis("left", "right")
-	# For animations
+	# For animations and sliding
 	if direction == 1:
 		facing_direction = 0 # Right
 	elif direction == -1:
@@ -106,15 +108,20 @@ func _physics_process(delta: float) -> void:
 			if is_on_floor(): # To IDLE
 				switch_state(STATE.IDLE)
 			
-			if Input.is_action_just_pressed("jump"): # To JUMP
-				if $LeftWallRay.is_colliding() == true:
-					$LeftWallRay.enabled = false
-				elif $RightWallRay.is_colliding() == true:
-					$RightWallRay.enabled = false
+			if Input.is_action_just_pressed("jump"): # To WALLJUMP
 				switch_state(STATE.WALLJUMP)
 		
-		STATE.WALLSLIDE:
-			pass
+		STATE.WALLJUMP:
+			var walljump_direction := 0.0
+			velocity.x = walljump_direction * walk_velocity
+			velocity.y = walljump_velocity
+			if $LeftWallRay.is_colliding():
+				walljump_direction = 1
+			elif $RightWallRay.is_colliding():
+				walljump_direction = -1
+			
+			if Input.is_action_just_released("jump") or !Input.is_action_pressed("jump") or $MaxJumpTime.is_stopped() or is_on_ceiling_only(): # To FALL
+				switch_state(STATE.FALL)
 	
 	$State.text = STATE.keys()[active_state]
 	move_and_slide()
@@ -126,8 +133,6 @@ func switch_state(to_state: STATE) -> void: ## Handles switching and animation
 	match active_state:
 		STATE.IDLE:
 			$SlideMinimum.stop()
-			$LeftWallRay.enabled = true
-			$RightWallRay.enabled = true
 			$Collision.shape.size = Vector2(12, 31)
 			$Collision.position = Vector2(0, 0.5)
 			$AnimatedSprite2D.play("sinatra_idle")
@@ -151,4 +156,7 @@ func switch_state(to_state: STATE) -> void: ## Handles switching and animation
 		
 		STATE.WALLSLIDE:
 			$AnimatedSprite2D.play("sinatra_wallslide")
-			
+		
+		STATE.WALLJUMP:
+			$MaxJumpTime.start()
+			$AnimatedSprite2D.play("sinatra_walljump")
