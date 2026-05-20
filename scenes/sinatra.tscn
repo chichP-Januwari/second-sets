@@ -161,14 +161,6 @@ sprite_frames = SubResource("SpriteFrames_lbgrs")
 animation = &"sinatra_walljump"
 autoplay = "sinatra_idle"
 
-[node name="LeftWallRay" type="RayCast2D" parent="." unique_id=2114182885]
-position = Vector2(0, -10)
-target_position = Vector2(-25, 0)
-
-[node name="RightWallRay" type="RayCast2D" parent="." unique_id=1376696689]
-position = Vector2(0, -10)
-target_position = Vector2(25, 0)
-
 [node name="CoyoteTimer" type="Timer" parent="." unique_id=1057881902]
 process_callback = 0
 wait_time = 0.1
@@ -189,9 +181,9 @@ process_callback = 0
 wait_time = 0.5
 one_shot = true
 
-[node name="WalljumpTimer" type="Timer" parent="." unique_id=679979896]
+[node name="WallJumpTimer" type="Timer" parent="." unique_id=679979896]
 process_callback = 0
-wait_time = 0.75
+wait_time = 0.1
 one_shot = true
 
 [node name="State" type="Label" parent="." unique_id=529931096]
