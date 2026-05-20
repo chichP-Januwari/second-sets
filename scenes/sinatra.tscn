@@ -4,12 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://bb6snunogld0g" path="res://assets/characters/sinatra_fall.png" id="1_c3bs7"]
 [ext_resource type="Texture2D" uid="uid://dlo1p5mg6irbi" path="res://assets/characters/sinatra_run.png" id="1_vpeus"]
 [ext_resource type="Texture2D" uid="uid://cqcxtg6kfdgem" path="res://assets/characters/sinatra_idle.png" id="2_uj03w"]
+[ext_resource type="Texture2D" uid="uid://cyhukfs0js74l" path="res://assets/characters/sinatra_jump.png" id="4_5754x"]
 [ext_resource type="Texture2D" uid="uid://hl6g2j7lh8ip" path="res://assets/characters/sinatra_slide.png" id="4_uj03w"]
 [ext_resource type="Texture2D" uid="uid://c1nihx6ynnt01" path="res://assets/characters/sinatra_wallslide.png" id="6_lbgrs"]
 [ext_resource type="LabelSettings" uid="uid://c0rg7afvfgqrm" path="res://assets/fonts/label_settings.tres" id="7_lbgrs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4k038"]
-size = Vector2(12, 7)
+size = Vector2(12, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lbgrs"]
 atlas = ExtResource("1_c3bs7")
@@ -26,6 +27,18 @@ region = Rect2(0, 0, 24, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_nmpdx"]
 atlas = ExtResource("2_uj03w")
 region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mie10"]
+atlas = ExtResource("4_5754x")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jnfk"]
+atlas = ExtResource("4_5754x")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38tqr"]
+atlas = ExtResource("4_5754x")
+region = Rect2(48, 0, 24, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_feo7j"]
 atlas = ExtResource("1_vpeus")
@@ -58,7 +71,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"sinatra_fall",
-"speed": 6.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -70,6 +83,20 @@ animations = [{
 "loop": true,
 "name": &"sinatra_idle",
 "speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mie10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jnfk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38tqr")
+}],
+"loop": false,
+"name": &"sinatra_jump",
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -92,15 +119,15 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3584i")
 }],
-"loop": true,
+"loop": false,
 "name": &"sinatra_slide",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("6_lbgrs")
 }],
-"loop": true,
+"loop": false,
 "name": &"sinatra_wallslide",
 "speed": 1.0
 }]
@@ -114,7 +141,7 @@ script = ExtResource("1_4k038")
 visibility_layer = 2
 z_index = 1
 z_as_relative = false
-position = Vector2(0, 12.5)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_4k038")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=400940614]
@@ -122,7 +149,7 @@ visibility_layer = 2
 z_index = 1
 z_as_relative = false
 sprite_frames = SubResource("SpriteFrames_lbgrs")
-animation = &"sinatra_wallslide"
+animation = &"sinatra_jump"
 autoplay = "sinatra_idle"
 
 [node name="RightWallRay" type="RayCast2D" parent="." unique_id=1628094166]

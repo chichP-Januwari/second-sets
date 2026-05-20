@@ -16,13 +16,13 @@ var roll_speed := 300.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var active_state := STATE.IDLE
-var facing_direction := 0 # Right
+var facing_direction := 0 # For animations and sliding, Right
 
 func _physics_process(delta: float) -> void:
 	var direction : float
 	if !active_state == STATE.SLIDE:
 		direction = Input.get_axis("left", "right")
-	# Only for animations
+	# For animations
 	if direction == 1:
 		facing_direction = 0 # Right
 	elif direction == -1:
@@ -111,7 +111,10 @@ func _physics_process(delta: float) -> void:
 					$LeftWallRay.enabled = false
 				elif $RightWallRay.is_colliding() == true:
 					$RightWallRay.enabled = false
-				switch_state(STATE.JUMP)
+				switch_state(STATE.WALLJUMP)
+		
+		STATE.WALLSLIDE:
+			pass
 	
 	$State.text = STATE.keys()[active_state]
 	move_and_slide()
@@ -134,7 +137,7 @@ func switch_state(to_state: STATE) -> void: ## Handles switching and animation
 			
 		STATE.JUMP:
 			$MaxJumpTime.start()
-			$AnimatedSprite2D.play("sinatra_fall")
+			$AnimatedSprite2D.play("sinatra_jump")
 			
 		STATE.FALL:
 			$MaxJumpTime.stop()
