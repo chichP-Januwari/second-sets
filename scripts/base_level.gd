@@ -3,8 +3,8 @@ class_name BaseLevel ## Base level node for Second Set
 
 # Game State
 enum GAME_STATE {
-	FUCK,
-	SHIT
+	START,
+	KEYHELD,
 }
 
 # Nodes
@@ -15,6 +15,8 @@ enum GAME_STATE {
 # AI
 var position_array : Array = [] # Contains positions that player (Sinatra) had
 var animstate_array : Array # Contains animation states that player (Sinatra) had
+
+# Tracker
 
 
 # Called when the node enters the scene tree for the first time.
