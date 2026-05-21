@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cyhukfs0js74l" path="res://assets/characters/sinatra_jump.png" id="4_5754x"]
 [ext_resource type="Texture2D" uid="uid://hl6g2j7lh8ip" path="res://assets/characters/sinatra_slide.png" id="4_uj03w"]
 [ext_resource type="Texture2D" uid="uid://c1nihx6ynnt01" path="res://assets/characters/sinatra_wallslide.png" id="6_lbgrs"]
-[ext_resource type="LabelSettings" uid="uid://c0rg7afvfgqrm" path="res://assets/fonts/label_settings.tres" id="7_lbgrs"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="10_nmpdx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4k038"]
 size = Vector2(12, 31)
@@ -186,16 +186,13 @@ process_callback = 0
 wait_time = 0.1
 one_shot = true
 
-[node name="State" type="Label" parent="." unique_id=529931096]
-z_index = 1
-z_as_relative = false
-offset_left = -10.0
-offset_top = -30.0
-offset_right = 9.0
-offset_bottom = -18.0
-text = "State"
-label_settings = ExtResource("7_lbgrs")
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1142274250]
+top_level = true
+editor_draw_limits = true
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1227844596]
-update_rotation = false
-update_scale = false
+[node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=946920743]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("10_nmpdx")
+host_layers = 2
+metadata/_custom_type_script = "uid://bd046eokvcnu2"

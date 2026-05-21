@@ -16,8 +16,12 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Second Set"
 config/description="Get the key to open the vault, and run back home with the goodies!"
-run/main_scene="uid://bfy26kov2n3dh"
+run/main_scene="uid://b8qsr26uos21x"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+
+[autoload]
+
+PhantomCameraManager="*uid://duq6jhf6unyis"
 
 [display]
 
@@ -30,6 +34,10 @@ window/stretch/aspect="expand"
 
 movie_writer/video_quality=0.65
 movie_writer/movie_file="E:/replay.avi"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
 [gui]
 
@@ -66,8 +74,9 @@ slide={
 [layer_names]
 
 2d_render/layer_1="World BG"
-2d_render/layer_2="Entities"
-2d_render/layer_3="World FG"
+2d_render/layer_2="Player"
+2d_render/layer_3="Entities"
+2d_render/layer_4="World FG"
 2d_render/layer_5="UI"
 2d_physics/layer_1="World"
 2d_physics/layer_2="Entities"
