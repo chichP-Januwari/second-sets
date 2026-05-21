@@ -1,5 +1,11 @@
 extends Area2D
 
+enum AI_STATE {
+	DISABLED,
+	APPEARING,
+	ENABLED
+}
+
 enum ANIM_STATE {
 	IDLE,
 	RUN,
@@ -9,5 +15,3 @@ enum ANIM_STATE {
 	WALLSLIDE,
 	WALLJUMP,
 }
-
-signal chase
