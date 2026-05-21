@@ -121,7 +121,7 @@ func _physics_process(delta: float) -> void:
 			elif sign(get_wall_normal().x) == -1: # If wall is on right
 				facing_direction = 0 # Face left
 			
-			if !is_on_wall_only(): # To FALL
+			if !is_on_wall(): # To FALL
 				switch_state(STATE.FALL)
 			
 			if is_on_floor(): # To IDLE
