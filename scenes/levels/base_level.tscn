@@ -52,7 +52,3 @@ metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
 [node name="Sinatra" parent="." unique_id=357705737 instance=ExtResource("6_3rriw")]
 position = Vector2(6, 336)
-
-[node name="BaseLevel" type="Node2D" parent="." unique_id=915095604]
-script = ExtResource("1_o1chu")
-metadata/_custom_type_script = "uid://cw2b0rp6jcq1g"
