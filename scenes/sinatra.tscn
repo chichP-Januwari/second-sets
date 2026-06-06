@@ -1,148 +1,16 @@
 [gd_scene format=3 uid="uid://b8ux20id6pnky"]
 
 [ext_resource type="Script" uid="uid://c1w17w0v2ow2f" path="res://scripts/sinatra_controller.gd" id="1_4k038"]
-[ext_resource type="Texture2D" uid="uid://bb6snunogld0g" path="res://assets/characters/sinatra_fall.png" id="1_c3bs7"]
-[ext_resource type="Texture2D" uid="uid://dlo1p5mg6irbi" path="res://assets/characters/sinatra_run.png" id="1_vpeus"]
-[ext_resource type="Texture2D" uid="uid://br1e61y0j3pw5" path="res://assets/characters/sinatra_walljump.png" id="2_ellcv"]
-[ext_resource type="Texture2D" uid="uid://cqcxtg6kfdgem" path="res://assets/characters/sinatra_idle.png" id="2_uj03w"]
-[ext_resource type="Texture2D" uid="uid://cyhukfs0js74l" path="res://assets/characters/sinatra_jump.png" id="4_5754x"]
-[ext_resource type="Texture2D" uid="uid://hl6g2j7lh8ip" path="res://assets/characters/sinatra_slide.png" id="4_uj03w"]
-[ext_resource type="Texture2D" uid="uid://c1nihx6ynnt01" path="res://assets/characters/sinatra_wallslide.png" id="6_lbgrs"]
-[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="10_nmpdx"]
+[ext_resource type="SpriteFrames" uid="uid://b4hljgt0pjs7k" path="res://assets/characters/sinatra.tres" id="2_feo7j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4k038"]
-size = Vector2(12, 31)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lbgrs"]
-atlas = ExtResource("1_c3bs7")
-region = Rect2(0, 0, 24, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5754x"]
-atlas = ExtResource("1_c3bs7")
-region = Rect2(24, 0, 24, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o4aua"]
-atlas = ExtResource("2_uj03w")
-region = Rect2(0, 0, 24, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nmpdx"]
-atlas = ExtResource("2_uj03w")
-region = Rect2(24, 0, 24, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mie10"]
-atlas = ExtResource("4_5754x")
-region = Rect2(0, 0, 24, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5jnfk"]
-atlas = ExtResource("4_5754x")
-region = Rect2(24, 0, 24, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_38tqr"]
-atlas = ExtResource("4_5754x")
-region = Rect2(48, 0, 24, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_feo7j"]
-atlas = ExtResource("1_vpeus")
-region = Rect2(0, 0, 24, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c3bs7"]
-atlas = ExtResource("1_vpeus")
-region = Rect2(24, 0, 24, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uj03w"]
-atlas = ExtResource("1_vpeus")
-region = Rect2(48, 0, 24, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4k038"]
-atlas = ExtResource("1_vpeus")
-region = Rect2(72, 0, 24, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3584i"]
-atlas = ExtResource("4_uj03w")
-region = Rect2(0, 0, 24, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_lbgrs"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lbgrs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5754x")
-}],
-"loop": true,
-"name": &"sinatra_fall",
-"speed": 3.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o4aua")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nmpdx")
-}],
-"loop": true,
-"name": &"sinatra_idle",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mie10")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5jnfk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_38tqr")
-}],
-"loop": false,
-"name": &"sinatra_jump",
-"speed": 6.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_feo7j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c3bs7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uj03w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4k038")
-}],
-"loop": true,
-"name": &"sinatra_run",
-"speed": 6.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3584i")
-}],
-"loop": false,
-"name": &"sinatra_slide",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_ellcv")
-}],
-"loop": false,
-"name": &"sinatra_walljump",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_lbgrs")
-}],
-"loop": false,
-"name": &"sinatra_wallslide",
-"speed": 1.0
-}]
+size = Vector2(12, 30)
 
 [node name="Sinatra" type="CharacterBody2D" unique_id=357705737]
+light_mask = 2
 visibility_layer = 2
+z_index = 1
+z_as_relative = false
 collision_layer = 2
 script = ExtResource("1_4k038")
 
@@ -150,16 +18,17 @@ script = ExtResource("1_4k038")
 visibility_layer = 2
 z_index = 1
 z_as_relative = false
-position = Vector2(0, 0.5)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_4k038")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=400940614]
 visibility_layer = 2
 z_index = 1
 z_as_relative = false
-sprite_frames = SubResource("SpriteFrames_lbgrs")
-animation = &"sinatra_walljump"
+sprite_frames = ExtResource("2_feo7j")
+animation = &"sinatra_idle"
 autoplay = "sinatra_idle"
+frame_progress = 0.90756696
 
 [node name="CoyoteTimer" type="Timer" parent="." unique_id=1057881902]
 process_callback = 0
@@ -185,14 +54,3 @@ one_shot = true
 process_callback = 0
 wait_time = 0.1
 one_shot = true
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1142274250]
-top_level = true
-editor_draw_limits = true
-
-[node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=946920743]
-process_priority = 300
-process_physics_priority = 300
-script = ExtResource("10_nmpdx")
-host_layers = 2
-metadata/_custom_type_script = "uid://bd046eokvcnu2"

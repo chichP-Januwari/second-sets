@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkgjbv8sj318j"
-path="res://.godot/imported/Vault.png-0eee780bddcd7adf8e55dc1395a8fb76.ctex"
+uid="uid://bdwafs1xhtn8o"
+path="res://.godot/imported/frank_jump.png-ebef5afb392075aba538d2aa3d2b4c84.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/world_objects/Vault.png"
-dest_files=["res://.godot/imported/Vault.png-0eee780bddcd7adf8e55dc1395a8fb76.ctex"]
+source_file="res://assets/characters/frank_jump.png"
+dest_files=["res://.godot/imported/frank_jump.png-ebef5afb392075aba538d2aa3d2b4c84.ctex"]
 
 [params]
 

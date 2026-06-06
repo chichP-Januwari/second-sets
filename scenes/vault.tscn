@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cdjfdcklhynlc"]
+
+[ext_resource type="Texture2D" uid="uid://d1k5yyvjxo0y8" path="res://assets/world_objects/vault_closed.png" id="1_50sdw"]
+[ext_resource type="Texture2D" uid="uid://80x1ff1f0jqj" path="res://assets/world_objects/vault_opened.png" id="2_02isx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_50sdw"]
+size = Vector2(16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l03qf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_50sdw")
+}],
+"loop": false,
+"name": &"vault_closed",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_02isx")
+}],
+"loop": false,
+"name": &"vault_open",
+"speed": 0.0
+}]
+
+[node name="Vault" type="Area2D" unique_id=1103871307]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=316006347]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_50sdw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=548822675]
+position = Vector2(-8, -24)
+sprite_frames = SubResource("SpriteFrames_l03qf")
+animation = &"vault_closed"
+centered = false
