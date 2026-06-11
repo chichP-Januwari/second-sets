@@ -17,7 +17,6 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="Second Set"
 config/description="Get the key to open the vault, and run back home with the goodies!"
 config/version="0.1.0"
-run/main_scene="uid://b8qsr26uos21x"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 
 [autoload]
@@ -92,4 +91,4 @@ slide={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color=Color(0.19607843, 0, 0.19607843, 1)

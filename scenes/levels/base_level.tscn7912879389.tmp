@@ -1,0 +1,22 @@
+[gd_scene format=4 uid="uid://b8qsr26uos21x"]
+
+[ext_resource type="Script" uid="uid://cw2b0rp6jcq1g" path="res://scripts/base_level.gd" id="1_o1chu"]
+[ext_resource type="PackedScene" uid="uid://crr5m0snhpf60" path="res://scenes/bg_tile_map_layer.tscn" id="4_o1chu"]
+[ext_resource type="PackedScene" uid="uid://bba4w65npn7yq" path="res://scenes/fg_tile_map_layer.tscn" id="5_3rriw"]
+[ext_resource type="PackedScene" uid="uid://b8ux20id6pnky" path="res://scenes/sinatra.tscn" id="6_3rriw"]
+
+[node name="BaseLevel" type="Node2D" unique_id=416393459]
+script = ExtResource("1_o1chu")
+metadata/_custom_type_script = "uid://cw2b0rp6jcq1g"
+
+[node name="BGTileMapLayer" parent="." unique_id=1427809098 instance=ExtResource("4_o1chu")]
+tile_map_data = PackedByteArray("AAAAABYAAAAAAAAAAAABABYAAAABAAAAAAACABYAAAABAAAAAAADABYAAAABAAAAAAAEABYAAAABAAAAAAAFABYAAAABAAAAAAAGABYAAAABAAAAAAAHABYAAAABAAAAAAAIABYAAAABAAAAAAAJABYAAAABAAAAAAAKABYAAAABAAAAAAALABYAAAABAAAAAAAMABYAAAABAAAAAAANABYAAAABAAAAAAAOABYAAAACAAAAAAAAABcAAAAAAAIAAAABABcAAAABAAIAAAACABcAAAABAAIAAAADABcAAAABAAIAAAAEABcAAAABAAIAAAAFABcAAAABAAIAAAAGABcAAAABAAIAAAANABcAAAABAAIAAAAMABcAAAABAAIAAAALABcAAAABAAIAAAAKABcAAAABAAIAAAAJABcAAAABAAIAAAAIABcAAAABAAIAAAAHABcAAAABAAIAAAAOABcAAAACAAIAAAA=")
+
+[node name="FGTileMapLayer" parent="." unique_id=2032449368 instance=ExtResource("5_3rriw")]
+tile_map_data = PackedByteArray("AAAJABUAAgAAAAAAAQAIABUAAgAAAAAAAgAKABUAAgAAAAAAAwA=")
+
+[node name="Sinatra" parent="." unique_id=357705737 instance=ExtResource("6_3rriw")]
+z_as_relative = true
+position = Vector2(6, 336)
+
+[editable path="FGTileMapLayer"]

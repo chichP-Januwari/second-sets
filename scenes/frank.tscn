@@ -16,5 +16,6 @@ shape = SubResource("RectangleShape2D_7ta6i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1670980642]
 sprite_frames = ExtResource("2_e5gi5")
-animation = &"sinatra_idle"
-frame_progress = 0.74685
+animation = &"sinatra_jump"
+frame = 2
+frame_progress = 1.0

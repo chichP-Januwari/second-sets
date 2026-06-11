@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 # Game State
@@ -31,7 +32,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing_direction := 0 # For animations and sliding, Right
 var last_walljump := 0.0
 var active_state := STATE.IDLE # Default
-
 
 func _physics_process(delta: float) -> void:
 	var direction : float
